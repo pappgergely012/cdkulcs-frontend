@@ -76,7 +76,7 @@ export function ProductList() {
       <HeroSection />
       <div id="products" className="max-w-7xl mx-auto px-4 py-12">
         <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-12 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-          Termékeink
+          Kiemelt termékeink
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {products.map((product) => (
