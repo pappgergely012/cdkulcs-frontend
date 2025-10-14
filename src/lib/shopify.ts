@@ -33,6 +33,10 @@ export interface Product {
           amount: string;
           currencyCode: string;
         };
+        compareAtPriceV2?: {
+          amount: string;
+          currencyCode: string;
+        };
       };
     }>;
   };
@@ -110,6 +114,10 @@ export const GET_PRODUCTS_QUERY = `
                 id
                 title
                 priceV2 {
+                  amount
+                  currencyCode
+                }
+                compareAtPriceV2 {
                   amount
                   currencyCode
                 }
