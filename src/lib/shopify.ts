@@ -6,6 +6,32 @@ export const shopifyClient = createStorefrontApiClient({
   publicAccessToken: import.meta.env.VITE_STOREFRONT_API_TOKEN,
 });
 
+export interface Collection {
+  id: string;
+  handle: string;
+  title: string;
+  description: string;
+  image?: {
+    url: string;
+    altText: string | null;
+  };
+  products: {
+    edges: Array<{
+      node: Product;
+    }>;
+  };
+}
+
+export interface CollectionsResponse {
+  data: {
+    collections: {
+      edges: Array<{
+        node: Collection;
+      }>;
+    };
+  };
+}
+
 export interface Product {
   id: string;
   title: string;
@@ -85,6 +111,74 @@ export interface ShopifyCart {
     };
   };
 }
+
+export const GET_COLLECTIONS_QUERY = `
+  query GetCollections($first: Int!) {
+    collections(first: $first) {
+      edges {
+        node {
+          id
+          handle
+          title
+          description
+          image {
+            url
+            altText
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_COLLECTION_PRODUCTS_QUERY = `
+  query GetCollectionProducts($handle: String!, $first: Int!) {
+    collection(handle: $handle) {
+      id
+      title
+      description
+      products(first: $first) {
+        edges {
+          node {
+            id
+            title
+            description
+            images(first: 1) {
+              edges {
+                node {
+                  url
+                  altText
+                }
+              }
+            }
+            priceRange {
+              minVariantPrice {
+                amount
+                currencyCode
+              }
+            }
+            variants(first: 1) {
+              edges {
+                node {
+                  id
+                  title
+                  priceV2 {
+                    amount
+                    currencyCode
+                  }
+                  compareAtPriceV2 {
+                    amount
+                    currencyCode
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export const GET_PRODUCTS_QUERY = `
   query GetProducts($first: Int!) {

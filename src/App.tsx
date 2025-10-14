@@ -3,8 +3,9 @@ import { CartProvider } from "./context/CartContext";
 import { Header } from "./components/Header";
 import { ProductList } from "./components/ProductList";
 import { CheckoutPage } from "./components/CheckoutPage";
-import Kategoriak from "./components/Categories";
-import Kapcsolat from "./components/Contact";
+import Categories from "./components/Categories";
+import { CategoryProducts } from "./components/CategoryProducts";
+import Contact from "./components/Contact";
 import "./App.css";
 
 function App() {
@@ -15,8 +16,9 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<ProductList />} />
-            <Route path="/categories" element={<Kategoriak />} />
-            <Route path="/contact" element={<Kapcsolat />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/categories/:handle" element={<CategoryProducts />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
         </div>
