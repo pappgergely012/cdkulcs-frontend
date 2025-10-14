@@ -60,7 +60,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <img
           src={imageUrl}
           alt={product.images.edges[0]?.node.altText || product.title}
-          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-500 ease-out"
         />
       </div>
 

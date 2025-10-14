@@ -29,6 +29,7 @@ export function CategoryProducts() {
   const [categoryDescription, setCategoryDescription] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   useEffect(() => {
     const fetchCategoryProducts = async () => {
@@ -96,15 +97,15 @@ export function CategoryProducts() {
   return (
     <div className="min-h-screen bg-white">
       {/* Category Header */}
-      <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 py-16">
+      <div className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="mb-6">
+          <div className="mb-4">
             <Link
               to="/categories"
-              className="inline-flex items-center gap-2 text-white/90 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors text-xs font-medium"
             >
               <svg
-                className="w-5 h-5"
+                className="w-4 h-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -119,19 +120,35 @@ export function CategoryProducts() {
               Vissza a kategóriákhoz
             </Link>
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
+          <h1 className="text-2xl md:text-3xl font-black text-gray-900 mb-3">
             {categoryTitle}
           </h1>
           {categoryDescription && (
-            <p className="text-xl text-white/90 max-w-2xl">
-              {categoryDescription}
-            </p>
+            <div className="max-w-3xl">
+              <p
+                className={`text-sm md:text-md text-gray-600 leading-relaxed ${
+                  !isDescriptionExpanded ? "line-clamp-1" : ""
+                }`}
+              >
+                {categoryDescription}
+              </p>
+              {categoryDescription.length > 150 && (
+                <button
+                  onClick={() =>
+                    setIsDescriptionExpanded(!isDescriptionExpanded)
+                  }
+                  className="mt-2 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+                >
+                  {isDescriptionExpanded ? "Kevesebb" : "Tovább olvasom"}
+                </button>
+              )}
+            </div>
           )}
         </div>
       </div>
 
       {/* Products Grid */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 py-12 pt-0">
         {products.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-gray-600 text-lg mb-4">
@@ -146,7 +163,7 @@ export function CategoryProducts() {
           </div>
         ) : (
           <>
-            <div className="mb-8">
+            <div className="mb-4">
               <h2 className="text-2xl font-bold text-gray-900">
                 {products.length} termék
               </h2>
