@@ -12,7 +12,14 @@ export function Header() {
     <>
       <header className="header">
         <div className="header-content">
-          <h1 className="header-title">CD Kulcs Webshop</h1>
+          <div className="header-logo">
+            <img
+              src="/images/cd-key-logo.png"
+              alt="CD Kulcs"
+              className="logo-image"
+            />
+            <span className="logo-text">CD Kulcs</span>
+          </div>
           <button
             className="cart-button"
             onClick={() => setIsCartOpen(true)}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { shopifyClient, GET_PRODUCTS_QUERY } from "../lib/shopify";
 import type { Product, ProductsResponse } from "../lib/shopify";
 import { ProductCard } from "./ProductCard";
+import HeroSection from "./HeroSection";
 import "./ProductList.css";
 
 export function ProductList() {
@@ -36,36 +37,48 @@ export function ProductList() {
 
   if (loading) {
     return (
-      <div className="product-list-container">
-        <div className="loading">Termékek betöltése...</div>
-      </div>
+      <>
+        <HeroSection />
+        <div className="product-list-container">
+          <div className="loading">Termékek betöltése...</div>
+        </div>
+      </>
     );
   }
 
   if (error) {
     return (
-      <div className="product-list-container">
-        <div className="error">{error}</div>
-      </div>
+      <>
+        <HeroSection />
+        <div className="product-list-container">
+          <div className="error">{error}</div>
+        </div>
+      </>
     );
   }
 
   if (products.length === 0) {
     return (
-      <div className="product-list-container">
-        <div className="empty">Nincsenek elérhető termékek</div>
-      </div>
+      <>
+        <HeroSection />
+        <div className="product-list-container">
+          <div className="empty">Nincsenek elérhető termékek</div>
+        </div>
+      </>
     );
   }
 
   return (
-    <div className="product-list-container">
-      <h1 className="products-title">Termékeink</h1>
-      <div className="products-grid">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+    <>
+      <HeroSection />
+      <div id="products" className="product-list-container">
+        <h1 className="products-title">Termékeink</h1>
+        <div className="products-grid">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
