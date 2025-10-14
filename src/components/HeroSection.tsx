@@ -37,7 +37,7 @@ const HeroSection: React.FC = () => {
         </div>
 
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-4 text-white drop-shadow-lg">
-          Legjobb szoftver kulcsok
+          Legális szoftver kulcsok
           <br />
           <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
             verhetetlen áron
