@@ -27,30 +27,30 @@ export function Header() {
             <nav className="hidden md:flex items-center gap-6">
               <Link
                 to="/"
-                className={`font-semibold transition-colors duration-200 ${
+                className={`transition-colors duration-200 ${
                   location.pathname === "/"
-                    ? "text-blue-600"
-                    : "text-gray-700 hover:text-blue-600"
+                    ? "text-purple-600"
+                    : "text-gray-800 hover:text-purple-600"
                 }`}
               >
                 Főoldal
               </Link>
               <Link
                 to="/categories"
-                className={`font-semibold transition-colors duration-200 ${
+                className={` transition-colors duration-200 ${
                   location.pathname === "/categories"
-                    ? "text-blue-600"
-                    : "text-gray-700 hover:text-blue-600"
+                    ? "text-purple-600"
+                    : "text-gray-800 hover:text-purple-600"
                 }`}
               >
                 Szoftverek
               </Link>
               <Link
                 to="/contact"
-                className={`font-semibold transition-colors duration-200 ${
+                className={` transition-colors duration-200 ${
                   location.pathname === "/contact"
-                    ? "text-blue-600"
-                    : "text-gray-700 hover:text-blue-600"
+                    ? "text-purple-600"
+                    : "text-gray-800 hover:text-purple-600"
                 }`}
               >
                 Kapcsolat
