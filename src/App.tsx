@@ -1,4 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import { useEffect } from "react";
 import { CartProvider } from "./context/CartContext";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
@@ -10,13 +16,32 @@ import Contact from "./components/Contact";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfService";
 import RefundPolicy from "./components/RefundPolicy";
+import { shopifyAnalytics, sessionTracker } from "./lib/analytics";
 import "./App.css";
+
+function AnalyticsTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Initialize session on first load
+    sessionTracker.getSessionId();
+  }, []);
+
+  useEffect(() => {
+    // Track page views on route change
+    sessionTracker.trackPageView();
+    shopifyAnalytics.trackPageView(location.pathname);
+  }, [location]);
+
+  return null;
+}
 
 function App() {
   return (
     <Router>
       <CartProvider>
         <div className="app flex flex-col min-h-screen">
+          <AnalyticsTracker />
           <Header />
           <main className="flex-grow">
             <Routes>
