@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { shopifyClient, GET_PRODUCTS_QUERY } from "../lib/shopify";
 import type { Product, ProductsResponse } from "../lib/shopify";
 import { ProductCard } from "./ProductCard";
+import { ProductCardSkeleton } from "./ProductCardSkeleton";
 import HeroSection from "./HeroSection";
 
 export function ProductList() {
@@ -38,9 +39,14 @@ export function ProductList() {
     return (
       <>
         <HeroSection />
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          <div className="text-center text-gray-600 text-lg">
-            Termékek betöltése...
+        <div id="products" className="max-w-7xl mx-auto px-4 py-12">
+          <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-12 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Kiemelt termékeink
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <ProductCardSkeleton key={index} />
+            ))}
           </div>
         </div>
       </>

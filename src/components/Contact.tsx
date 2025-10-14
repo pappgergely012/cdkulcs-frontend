@@ -100,7 +100,7 @@ const Contact: React.FC = () => {
                   <h3 className="text-lg font-semibold text-gray-900 mb-1">
                     Telefon
                   </h3>
-                  <p className="text-gray-600">+36 1 234 5678</p>
+                  <p className="text-gray-600">+36 70 257 4500</p>
                   <p className="text-sm text-gray-500">H-P: 9:00-18:00</p>
                 </div>
               </div>
@@ -131,8 +131,8 @@ const Contact: React.FC = () => {
                   <h3 className="text-lg font-semibold text-gray-900 mb-1">
                     Cím
                   </h3>
-                  <p className="text-gray-600">1234 Budapest</p>
-                  <p className="text-gray-600">Szoftver utca 1.</p>
+                  <p className="text-gray-600">3441 Mezőkeresztes</p>
+                  <p className="text-gray-600">Sallai u. 9. (Telephely)</p>
                 </div>
               </div>
             </div>

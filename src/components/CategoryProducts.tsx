@@ -6,6 +6,7 @@ import {
   type Product,
 } from "../lib/shopify";
 import { ProductCard } from "./ProductCard";
+import { ProductCardSkeleton } from "./ProductCardSkeleton";
 
 interface CollectionProductsResponse {
   data: {
@@ -69,10 +70,28 @@ export function CategoryProducts() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 text-lg">Termékek betöltése...</p>
+      <div className="min-h-screen bg-white">
+        {/* Category Header Skeleton */}
+        <div className="py-8 bg-white">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="mb-2">
+              <div className="h-4 w-40 bg-gray-200 rounded animate-pulse"></div>
+            </div>
+            <div className="h-8 w-64 bg-gray-200 rounded mb-3 animate-pulse"></div>
+            <div className="h-5 w-96 bg-gray-200 rounded animate-pulse"></div>
+          </div>
+        </div>
+
+        {/* Products Grid Skeleton */}
+        <div className="max-w-7xl mx-auto px-4 py-12 pt-0">
+          <div className="mb-4">
+            <div className="h-8 w-32 bg-gray-200 rounded animate-pulse"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <ProductCardSkeleton key={index} />
+            ))}
+          </div>
         </div>
       </div>
     );
