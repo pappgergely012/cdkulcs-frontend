@@ -61,32 +61,38 @@ export function Header() {
           {/* Right side buttons */}
           <div className="flex items-center gap-2">
             <button
-              className="relative bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full w-12 h-12 md:w-14 md:h-14 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:rotate-3 hover:shadow-lg active:scale-95"
+              className="relative group"
               onClick={() => setIsCartOpen(true)}
               aria-label="Kosár megnyitása"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="md:w-7 md:h-7"
+              <div
+                className={`cursor-pointer flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-200 ${
+                  totalItems > 0
+                    ? "bg-purple-100 hover:bg-purple-200"
+                    : "bg-gray-100 hover:bg-gray-200"
+                }`}
               >
-                <circle cx="9" cy="21" r="1" />
-                <circle cx="20" cy="21" r="1" />
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-              </svg>
-
-              {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold min-w-[20px] h-5 rounded-full flex items-center justify-center px-1 border-2 border-white shadow-lg animate-pulse">
-                  {totalItems}
-                </span>
-              )}
+                <svg
+                  className={`w-5 h-5 ${
+                    totalItems > 0 ? "text-purple-700" : "text-gray-700"
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                  />
+                </svg>
+                {totalItems > 0 && (
+                  <span className="text-sm font-bold text-purple-900">
+                    {totalItems}
+                  </span>
+                )}
+              </div>
             </button>
 
             {/* Mobile Menu Button */}

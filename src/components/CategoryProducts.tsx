@@ -99,7 +99,7 @@ export function CategoryProducts() {
       {/* Category Header */}
       <div className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="mb-4">
+          <div className="mb-2">
             <Link
               to="/categories"
               className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors text-xs font-medium"
@@ -124,7 +124,7 @@ export function CategoryProducts() {
             {categoryTitle}
           </h1>
           {categoryDescription && (
-            <div className="max-w-3xl">
+            <div className="max-w-7xl">
               <p
                 className={`text-sm md:text-md text-gray-600 leading-relaxed ${
                   !isDescriptionExpanded ? "line-clamp-1" : ""
